@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&display=swap');
+
+/* =======================================================================
+   OMEINS!! — Thème webradio AzuraCast  (v6)
+   À coller dans : Admin → Branding → « Custom CSS for Public Pages »
+   ======================================================================= */
+
+:root,
+[data-bs-theme] {
+    --omeins-accent: #bd00ff;
+    --omeins-text: #ffffff;
+    --omeins-text-muted: #ffffffb3;
+    --omeins-text-dim: #ffffff80;
+    --omeins-card-bg: #ffffff0a;
+    --omeins-card-border: #bd00ff66;
+
+    --bs-primary: #bd00ff;
+    --bs-primary-rgb: 189, 0, 255;
+    --bs-link-color: #bd00ff;
+    --bs-link-hover-color: #d04dff;
+    --bs-body-bg: #000000;
+    --bs-body-color: #ffffff;
+
+    /* On rend transparentes les surfaces grises du thème (panneaux internes) */
+    --bs-secondary-bg: transparent;
+    --bs-tertiary-bg: transparent;
+    --bs-secondary-bg-subtle: transparent;
+    --bs-tertiary-bg-subtle: transparent;
+    --bs-dark-bg-subtle: transparent;
+}
+
+/* 1) FOND noir + police Outfit partout ----------------------------------- */
+[data-bs-theme] html,
+[data-bs-theme] body,
+[data-bs-theme] body.page-minimal {
+    background: #000000 !important; background-image: none !important;
+    color: var(--omeins-text);
+    font-family: 'Outfit', system-ui, -apple-system, sans-serif !important;
+    -webkit-font-smoothing: antialiased;
+}
+[data-bs-theme] body, [data-bs-theme] .card, [data-bs-theme] .radio-player-widget,
+[data-bs-theme] .card-body, [data-bs-theme] .now-playing-title,
+[data-bs-theme] .now-playing-artist, [data-bs-theme] .btn, [data-bs-theme] .card-title {
+    font-family: 'Outfit', system-ui, -apple-system, sans-serif !important;
+}
+
+/* 2) LUCIOLES : conteneurs transparents ---------------------------------- */
+#omeins-fireflies { position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: -1; pointer-events: none; }
+[data-bs-theme] #page-wrapper, [data-bs-theme] #main, [data-bs-theme] #public-radio-player,
+[data-bs-theme] .public-page, [data-bs-theme] .container, [data-bs-theme] .container-fluid, [data-bs-theme] .row {
+    background: transparent !important; background-image: none !important;
+}
+
+/* 3) CARTE du lecteur : verre + halo + bordure (les internes sont neutralisées en 3b) */
+[data-bs-theme] .card,
+[data-bs-theme] .radio-player-widget {
+    background: transparent !important;
+    border: 1px solid var(--omeins-card-border) !important;
+    border-radius: 1.5rem !important;
+    -webkit-backdrop-filter: none !important; backdrop-filter: none !important;
+    box-shadow: 0 0 30px #bd00ff26;
+    color: var(--omeins-text);
+}
+
+/* 3b) PANNEAUX INTERNES : transparents, sans bordure ni gris ------------- */
+[data-bs-theme] .card-body,
+[data-bs-theme] .card .card,
+[data-bs-theme] .now-playing,
+[data-bs-theme] .radio-controls,
+[data-bs-theme] .bg-body-secondary, [data-bs-theme] .bg-body-tertiary,
+[data-bs-theme] .bg-secondary, [data-bs-theme] .bg-secondary-subtle,
+[data-bs-theme] .bg-tertiary, [data-bs-theme] .bg-dark, [data-bs-theme] .bg-dark-subtle {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+[data-bs-theme] .card .card { border: none !important; box-shadow: none !important; }
+
+/* 3c) Le gris restant est dessiné par un pseudo-élément -> on le neutralise */
+[data-bs-theme] #public-radio-player *::before,
+[data-bs-theme] #public-radio-player *::after,
+[data-bs-theme] .card-body *::before,
+[data-bs-theme] .card-body *::after {
+    background: transparent !important;
+    background-color: transparent !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    border-color: transparent !important;
+}
+
+/* Respiration interne : padding + marges pour ne rien coller aux bords --- */
+[data-bs-theme] .card-body { padding: 1.4rem 1.6rem !important; }
+[data-bs-theme] .radio-controls { padding: .5rem .25rem 0 !important; gap: 1rem; align-items: center; }
+[data-bs-theme] .now-playing-art { margin-right: 1.1rem; }
+[data-bs-theme] .now-playing-art img { width: 84px; height: 84px; border-radius: .9rem; box-shadow: 0 10px 40px #bd00ff40; }
+/* Le texte garde une marge à droite et ne déborde pas */
+[data-bs-theme] .now-playing-details { padding-right: .5rem; min-width: 0; }
+
+/* 4) TITRE STATION « RadiOmeins » centré --------------------------------- */
+[data-bs-theme] .card-title,
+[data-bs-theme] .card-header,
+[data-bs-theme] .now-playing-station-name {
+    text-align: center !important; width: 100% !important;
+    font-weight: 900; color: var(--omeins-text) !important;
+}
+
+/* 5) NOW PLAYING : titre / artiste --------------------------------------- */
+[data-bs-theme] .now-playing-title  { font-weight: 800; font-size: 1.1rem; line-height: 1.25; color: var(--omeins-text) !important; }
+[data-bs-theme] .now-playing-artist { font-weight: 500; color: var(--omeins-text-muted) !important; }
+
+/* 6) BARRE DE PROGRESSION -> violet -------------------------------------- */
+[data-bs-theme] progress {
+    -webkit-appearance: none; -moz-appearance: none; appearance: none;
+    accent-color: var(--omeins-accent);
+    height: .45rem; border: none; border-radius: 9999px; overflow: hidden;
+    background: #ffffff26 !important; color: var(--omeins-accent);
+}
+[data-bs-theme] progress::-webkit-progress-bar { background: #ffffff26; border-radius: 9999px; }
+[data-bs-theme] progress::-webkit-progress-value { background: var(--omeins-accent) !important; border-radius: 9999px; }
+[data-bs-theme] progress::-moz-progress-bar { background: var(--omeins-accent) !important; border-radius: 9999px; }
+[data-bs-theme] .progress { background: #ffffff14 !important; border-radius: 9999px; }
+[data-bs-theme] .progress-bar,
+[data-bs-theme] .progress-bar.bg-primary,
+[data-bs-theme] .progress-bar.bg-secondary {
+    background-color: var(--omeins-accent) !important; background-image: none !important;
+}
+[data-bs-theme] .time-display-played,
+[data-bs-theme] .time-display-total,
+[data-bs-theme] .time-display-progress { color: var(--omeins-text-dim) !important; }
+
+/* 7) BOUTON LECTURE ------------------------------------------------------ */
+[data-bs-theme] .radio-control-play-button,
+[data-bs-theme] .radio-control-play-button a,
+[data-bs-theme] .radio-control-play-button .icon,
+[data-bs-theme] .radio-control-play-button svg {
+    color: var(--omeins-accent) !important; fill: var(--omeins-accent) !important;
+}
+[data-bs-theme] .radio-control-play-button { margin-left: .25rem; filter: drop-shadow(0 0 10px #bd00ff88); transition: filter .2s, transform .2s; }
+[data-bs-theme] .radio-control-play-button:hover { transform: scale(1.05); filter: drop-shadow(0 0 16px #bd00ffcc); }
+
+/* 8) VOLUME -------------------------------------------------------------- */
+[data-bs-theme] input[type="range"] { -webkit-appearance: none; appearance: none; background: transparent; cursor: pointer; height: 1rem; margin-right: .25rem; }
+[data-bs-theme] input[type="range"]::-webkit-slider-runnable-track { background: #ffffff26; height: .4rem; border-radius: 9999px; }
+[data-bs-theme] input[type="range"]::-moz-range-track { background: #ffffff26; height: .4rem; border-radius: 9999px; }
+[data-bs-theme] input[type="range"]::-moz-range-progress { background: var(--omeins-accent); height: .4rem; border-radius: 9999px; }
+[data-bs-theme] input[type="range"]::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 14px; height: 14px; margin-top: -5px; border-radius: 50%; background: var(--omeins-accent); box-shadow: 0 0 8px #bd00ffaa; }
+[data-bs-theme] input[type="range"]::-moz-range-thumb { width: 14px; height: 14px; border: none; border-radius: 50%; background: var(--omeins-accent); box-shadow: 0 0 8px #bd00ffaa; }
+[data-bs-theme] .radio-control-volume-slider .icon,
+[data-bs-theme] .radio-control-volume-slider svg { color: var(--omeins-text-muted) !important; }
+
+/* 9) MINIMALISME : Historique + Playlist + Requête masqués --------------- */
+[data-bs-theme] .card-actions,
+[data-bs-theme] .card-body.buttons,
+[data-bs-theme] .radio-control-history-button,
+[data-bs-theme] .radio-control-playlist-button,
+[data-bs-theme] .radio-control-request-button { display: none !important; }
+
+/* 10) Liens -------------------------------------------------------------- */
+[data-bs-theme] a { color: var(--omeins-accent); }
+[data-bs-theme] a:hover { color: #d04dff; }
+
+/* =======================================================================
+   v8 — AMÉLIORATIONS
+   ======================================================================= */
+
+/* Bouton lecture un peu plus présent */
+[data-bs-theme] .radio-control-play-button { font-size: 1.55rem; }
+
+/* Pochette : coins arrondis, halo, zoom au survol (elle s'agrandit au clic) */
+[data-bs-theme] .album_art {
+    border-radius: .9rem;
+    box-shadow: 0 8px 30px #bd00ff33;
+    transition: transform .3s ease, box-shadow .3s ease;
+}
+[data-bs-theme] .album-art:hover .album_art { transform: scale(1.04); box-shadow: 0 12px 38px #bd00ff66; }
+
+/* Barre de progression : léger glow + remplissage qui glisse en douceur */
+[data-bs-theme] .progress-bar { box-shadow: 0 0 8px #bd00ff88; transition: width .35s linear; }
+
+/* Focus clavier en violet (accessibilité) */
+[data-bs-theme] .radio-controls button:focus-visible,
+[data-bs-theme] input[type="range"]:focus-visible,
+[data-bs-theme] .album-art:focus-visible {
+    outline: 2px solid #bd00ff; outline-offset: 3px; border-radius: 6px;
+}
+
+/* Indicateur « EN DIRECT » (élément injecté par le JS, classe omeins-keep) */
+[data-bs-theme] .omeins-live {
+    position: absolute; top: .8rem; right: 1rem;
+    display: inline-flex; align-items: center; gap: .4rem;
+    background: #bd00ff; color: #000;
+    font-family: 'Outfit', system-ui, sans-serif; font-weight: 800;
+    font-size: .6rem; letter-spacing: .14em; text-transform: uppercase;
+    padding: .22rem .6rem; border-radius: 9999px;
+    animation: omeins-pulse 2.4s ease-in-out infinite; z-index: 5;
+    pointer-events: none;
+}
+[data-bs-theme] .omeins-live .dot { width: .42rem; height: .42rem; border-radius: 50%; background: #000; }
+@keyframes omeins-pulse { 0%, 100% { box-shadow: 0 0 0 0 #bd00ff59; } 50% { box-shadow: 0 0 0 8px #bd00ff00; } }
+
+/* Responsive : petit écran */
+@media (max-width: 600px) {
+    [data-bs-theme] .card-body { padding: 1.1rem !important; }
+    [data-bs-theme] .now-playing-art img,
+    [data-bs-theme] .album_art { width: 64px; height: 64px; }
+    [data-bs-theme] .omeins-live { top: .6rem; right: .6rem; font-size: .55rem; }
+}
+
+/* Accessibilité : on coupe les animations si l'utilisateur le demande */
+@media (prefers-reduced-motion: reduce) {
+    [data-bs-theme] .omeins-live { animation: none; }
+    [data-bs-theme] .album_art, [data-bs-theme] .progress-bar { transition: none; }
+}
+
+/* =======================================================================
+   v9 — SPECTRE AUDIO + MOBILE
+   ======================================================================= */
+
+/* Spectre (canvas injecté dans la rangée de contrôles, entre play et volume) */
+[data-bs-theme] .omeins-spectrum {
+    flex: 1 1 auto;
+    min-width: 60px;
+    height: 36px;
+    margin: 0 1rem;
+    display: block;
+}
+
+/* Mobile : on réorganise pour que tout reste lisible et aéré */
+@media (max-width: 640px) {
+    [data-bs-theme] .card-body { padding: 1rem !important; }
+    [data-bs-theme] .now-playing-title { font-size: .98rem; }
+    [data-bs-theme] .now-playing-artist { font-size: .85rem; }
+    [data-bs-theme] .now-playing-art { margin-right: .8rem; }
+    [data-bs-theme] .now-playing-art img,
+    [data-bs-theme] .album_art { width: 58px; height: 58px; }
+
+    /* La rangée de contrôles passe sur deux lignes : play+volume, puis spectre */
+    [data-bs-theme] .radio-controls { flex-wrap: wrap; row-gap: .55rem; }
+    [data-bs-theme] .radio-control-volume { flex: 1 1 auto; }
+    [data-bs-theme] .omeins-spectrum { order: 5; flex-basis: 100%; margin: .15rem 0 0; height: 30px; }
+
+    [data-bs-theme] .omeins-live { top: .55rem; right: .55rem; font-size: .52rem; padding: .18rem .5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    [data-bs-theme] .omeins-spectrum { opacity: .5; }
+}
